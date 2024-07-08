@@ -1,0 +1,32 @@
+﻿@model MvcMovie.Models.Character
+
+<div class="background">
+    <div class="description">
+        <h1>Edit Character</h1>
+
+        <form asp-controller="Game" asp-action="EditCharacter" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="UserId" />
+            <input type="hidden" asp-for="Hp" />
+            <input type="hidden" asp-for="Mana" />
+            <input type="hidden" asp-for="Strength" />
+            <input type="hidden" asp-for="Intelligence" />
+            <input type="hidden" asp-for="Dexterity" />
+            <input type="hidden" asp-for="Experience" />
+            <input type="hidden" asp-for="Level" />
+            <input type="hidden" asp-for="Class" />
+
+            <div class="form-group">
+                <label asp-for="CharacterName"></label>
+                <input asp-for="CharacterName" class="form-control" />
+                <span asp-validation-for="CharacterName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Avatar">Avatar</label>
+                <input asp-for="Avatar" type="file" class="form-control" accept=".jpg, .jpeg, .png" />
+                <span asp-validation-for="Avatar" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-custom">Save Changes</button>
+        </form>
+    </div>
+</div>

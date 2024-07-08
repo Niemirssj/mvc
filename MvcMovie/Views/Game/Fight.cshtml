@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Fight";
+    var characterOriginal = ViewBag.CharacterOriginal as Character;
+    var characterUpdated = ViewBag.Character as Character;
+    var fightLog = ViewBag.FightLog as List<string>;
+}
+
+<div class="background">
+    <div class="description">
+        <h1>Fight Results</h1>
+
+        <div id="fightLog">
+            <h2>Fight Log:</h2>
+            @foreach (var log in fightLog)
+            {
+                <p>@log</p>
+            }
+        </div>
+
+        <h2>Character Before Fight:</h2>
+        <p>Name: @characterOriginal.CharacterName</p>
+        <p>HP: @characterOriginal.Hp</p>
+        <p>Mana: @characterOriginal.Mana</p>
+        <p>Level: @characterOriginal.Level</p>
+        <p>Experience: @characterOriginal.Experience</p>
+        <p>Strength: @characterOriginal.Strength</p>
+        <p>Intelligence: @characterOriginal.Intelligence</p>
+        <p>Dexterity: @characterOriginal.Dexterity</p>
+
+        <h2>Character After Fight:</h2>
+        <p>Name: @characterUpdated.CharacterName</p>
+        <p>HP: @characterUpdated.Hp</p>
+        <p>Mana: @characterUpdated.Mana</p>
+        <p>Level: @characterUpdated.Level</p>
+        <p>Experience: @characterUpdated.Experience</p>
+        <p>Strength: @characterUpdated.Strength</p>
+        <p>Intelligence: @characterUpdated.Intelligence</p>
+        <p>Dexterity: @characterUpdated.Dexterity</p>
+
+        <form method="post" action="@Url.Action("ChooseAction", "Game")">
+            <button type="submit" class="btn btn-primary btn-custom">Return to Menu</button>
+        </form>
+    </div>
+</div>

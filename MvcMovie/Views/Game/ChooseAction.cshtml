@@ -1,0 +1,36 @@
+﻿@model MvcMovie.Models.Character
+
+<div class="background">
+    <div class="description">
+        <h1>Choose Action for @Model.CharacterName</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Actions</h5>
+                        <ul class="list-group">
+                          
+                            <li class="list-group-item">
+                                <a asp-controller="Game" asp-action="Mission" asp-route-characterId="@Model.Id" class="btn btn-primary btn-custom">Send on Mission</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a asp-controller="Game" asp-action="ViewRankings" class="btn btn-primary btn-custom">View Rankings</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Character</h5>
+                        <p class="card-text">@Model.CharacterName</p>
+                        <p class="card-text">Level: @Model.Level</p>
+                        <p class="card-text">Experience: @Model.Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

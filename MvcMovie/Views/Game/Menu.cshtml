@@ -1,0 +1,34 @@
+﻿@model List<Character>
+
+<div class="background">
+    <div class="description">
+        <h1>Game Menu</h1>
+
+        <p>
+            <a asp-controller="Game" asp-action="CreateCharacter" class="btn btn-primary btn-custom">Create New Character</a>
+            <a asp-controller="Game" asp-action="Logout" class="btn btn-secondary btn-custom">Logout</a>
+        </p>
+
+        <div class="row">
+            @foreach (var character in Model)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        @if (!string.IsNullOrEmpty(character.Avatar))
+                        {
+                            <img src="@character.Avatar" class="card-img-top" alt="Avatar">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@character.CharacterName</h5>
+                            <p class="card-text">Level: @character.Level</p>
+                            <p class="card-text">Experience: @character.Experience</p>
+                            <a asp-controller="Game" asp-action="ChooseAction" asp-route-characterId="@character.Id" class="btn btn-primary btn-custom">Choose</a>
+                            <a asp-controller="Game" asp-action="EditCharacter" asp-route-characterId="@character.Id" class="btn btn-primary btn-custom">Edit</a>
+                            <a asp-controller="Game" asp-action="CharacterDetails" asp-route-characterId="@character.Id" target="_blank" class="btn btn-primary btn-custom">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

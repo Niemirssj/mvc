@@ -1,0 +1,44 @@
+﻿@model List<MvcMovie.Models.Character> // Upewnij się, że importujesz odpowiednią przestrzeń nazw
+
+@{
+    ViewData["Title"] = "View Rankings";
+}
+<div class="background">
+    <div class="description">
+<h2>View Rankings</h2>
+
+<form asp-controller="Game" asp-action="ViewRankings" method="get">
+    <p>
+        <select name="selectedStat" asp-items="@ViewBag.StatTypes">
+            <option value="">Select Stat</option>
+        </select>
+        <input type="text" name="searchString" placeholder="Search by name" />
+        <input type="submit" value="Filter" class="btn btn-primary" />
+    </p>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Character Name</th>
+            <th>Level</th>
+            <th>Strength</th>
+            <th>Intelligence</th>
+            <th>Dexterity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var character in Model)
+        {
+            <tr>
+                <td>@character.CharacterName</td>
+                <td>@character.Level</td>
+                <td>@character.Strength</td>
+                <td>@character.Intelligence</td>
+                <td>@character.Dexterity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+    </div>
+</div>

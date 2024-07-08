@@ -1,0 +1,18 @@
+﻿@model List<MvcMovie.Models.Mission>
+
+<div class="background">
+    <div class="description">
+        <h1>Available Missions</h1>
+
+        @foreach (var mission in Model)
+        {
+            <div>
+                <h3>@mission.MissionName</h3>
+                <p>@mission.Description</p>
+                <a asp-action="MissionDetails" asp-route-missionId="@mission.Id" target="_blank" class="btn btn-primary btn-custom">Details</a>
+                <button onclick="location.href='@Url.Action("Send", "Game", new { characterId = ViewBag.CharacterId, missionId = mission.Id })'" class="btn btn-primary btn-custom">Send on Mission</button>
+            </div>
+        }
+    </div>
+</div>
+

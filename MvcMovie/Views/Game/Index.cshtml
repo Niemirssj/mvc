@@ -1,0 +1,75 @@
+﻿@* Views/Game/Index.cshtml *@
+@{
+    ViewData["Title"] = "Gra";
+    var isLoggedIn = Context.Session.GetString("IsLoggedIn");
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HUNTERS - Strona Główna</title>
+    <style>
+        .background {
+            
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            color: white;
+        }
+
+        .description {
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-custom {
+            margin: 5px;
+            border: 2px solid #fff;
+            color: #fff;
+            background-color: #4CAF50; 
+        }
+
+            .btn-custom:hover {
+                color: #fff;
+                background-color: #388E3C; 
+            }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="description text-center">
+            <h1>Witaj w grze HUNTERS!</h1>
+            <p>Gra HUNTERS inspirowana jest anime Hunter x Hunter. Zarządzaj swoją gildią łowców, wykonuj misje i wspinaj się w rankingach, aby stać się najlepszym!</p>
+            @if (isLoggedIn == "true")
+            {
+                <p>Jesteś zalogowany jako @Context.Session.GetString("UserLogin")</p>
+                <div class="buttons">
+                    <form asp-action="Logout" asp-controller="Game" method="get">
+                        <button type="submit" class="btn btn-danger btn-custom">Wyloguj</button>
+                    </form>
+                </div>
+            }
+            else
+            {
+                <div class="buttons">
+                    <form asp-action="Login" asp-controller="Game" method="get" style="display:inline;">
+                        <button type="submit" class="btn btn-primary btn-custom">Zaloguj</button>
+                    </form>
+                    <form asp-action="Register" asp-controller="Game" method="get" style="display:inline;">
+                        <button type="submit" class="btn btn-secondary btn-custom">Zarejestruj</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
